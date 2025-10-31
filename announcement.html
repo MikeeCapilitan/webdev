@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcements | CWTSAIS</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f6fbff;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        .page-title {
+            text-align: center;
+            color: #8b0000; /* PUP Maroon */
+            font-size: 2.5em;
+            margin-top: 30px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* ===== ANNOUNCEMENT CONTAINER ===== */
+        .announcement-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding-bottom: 40px;
+        }
+
+        /* ===== EVENT CARD ===== */
+        .event-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 80%;
+            max-width: 750px;
+            padding: 25px 30px;
+            border-left: 10px solid #8b0000;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .event-title {
+            color: #8b0000;
+            font-size: 1.6em;
+            margin-bottom: 8px;
+        }
+
+        .event-details {
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 18px;
+        }
+
+        /* ===== BUTTON ===== */
+        .event-btn {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+
+        .event-btn:hover {
+            background-color: #a02020;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-container">
+        <h1 class="page-title"> ANNOUNCEMENTS</h1>
+
+        <div class="event-card">
+            <h2 class="event-title">Drug Awareness Webinar</h2>
+            <p class="event-details">
+                <strong>Location:</strong> Educational Building, Social Hall<br>
+                <strong>Time:</strong> 1:00 PM – 3:00 PM
+            </p>
+            <p class="event-description">
+                Join us for an informative Drug Awareness Webinar aimed at promoting a
+                healthy, drug-free lifestyle. This event will feature guest speakers from
+                the Department of Health and local youth advocates who will share insights
+                about drug prevention and community involvement.
+            </p>
+            <button class="event-btn">Learn More</button>
+        </div>
+
+        <div class="event-card">
+            <h2 class="event-title">Community Clean-Up Drive</h2>
+            <p class="event-details">
+                <strong>Location:</strong> Lakeshore, Taguig<br>
+                <strong>Time:</strong> 7:00 AM – 10:00 AM
+            </p>
+            <p class="event-description">
+                Be part of our CWTS Clean-Up Drive! Let’s work together to make our community
+                cleaner and greener while fulfilling our civic duty.
+            </p>
+            <button class="event-btn">Learn More</button>
+        </div>
+
+        <div class="event-card">
+            <h2 class="event-title">Leadership & Volunteer Seminar</h2>
+            <p class="event-details">
+                <strong>Location:</strong> PUPT AVR Room<br>
+                <strong>Time:</strong> 10:00 AM – 12:00 NN
+            </p>
+            <p class="event-description">
+                Enhance your leadership and volunteerism skills through this seminar organized
+                by CWTS officers and guest speakers from the National Service Training Program.
+            </p>
+            <button class="event-btn">Learn More</button>
+        </div>
+    </div>
+</body>
+</html>

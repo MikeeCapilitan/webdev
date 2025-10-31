@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | CWTSAIS</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f6fbff;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        .page-title {
+            text-align: center;
+            color: #8b0000; /* PUP Maroon */
+            font-size: 2.5em;
+            margin-top: 40px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* ===== ABOUT CONTAINER ===== */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px auto;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 40px 50px;
+            border-left: 10px solid #8b0000;
+        }
+
+        .about-section {
+            margin-bottom: 30px;
+        }
+
+        .about-section h2 {
+            color: #8b0000;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .about-section p {
+            color: #333;
+            line-height: 1.7;
+            font-size: 1em;
+            text-align: justify;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            color: #8b0000;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 25px 40px;
+            justify-items: center;
+        }
+
+        .member-card {
+            background-color: #fff0f0;
+            border-radius: 10px;
+            padding: 15px 25px;
+            width: 80%;
+            max-width: 250px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .member-card:hover {
+            transform: scale(1.05);
+        }
+
+        .member-card h3 {
+            color: #8b0000;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .member-card p {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-title">About CWTSAIS</h1>
+
+    <div class="about-container">
+        <div class="about-section">
+            <h2>What is CWTSAIS?</h2>
+            <p>
+                The <strong>Civic Welfare Training Service Attendance and Information System (CWTSAIS)</strong>
+                is a digital platform developed for <strong>Polytechnic University of the Philippines – Taguig Branch</strong>.
+                It aims to modernize the process of managing attendance, announcements, and records for students
+                enrolled in the <strong>Civic Welfare Training Service (CWTS)</strong> subject.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Purpose and Vision</h2>
+            <p>
+                CWTSAIS provides an organized and accessible way for both students and facilitators
+                to monitor attendance and stay informed about events, community service activities,
+                and announcements. Its purpose is to enhance efficiency, reduce paperwork,
+                and promote active participation in civic welfare initiatives.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>About CWTS</h2>
+            <p>
+                The <strong>Civic Welfare Training Service (CWTS)</strong> is one of the three components of the
+                <strong>National Service Training Program (NSTP)</strong> in the Philippines. It focuses on activities
+                that contribute to the general welfare and betterment of life for community members.
+                Through CWTS, students learn the importance of social responsibility, leadership,
+                and community engagement.
+            </p>
+        </div>
+
+        <div class="team-section">
+            <h2>Developed By</h2>
+            <div class="team-members">
+                <div class="member-card">
+                    <h3>Althea S. <br> Gulles</h3>
+                    <p>Project Manager / Frontend Developer</p>
+                </div>
+                <div class="member-card">
+                    <h3>John Cris C. Caculitan</h3>
+                    <p>Database / Quality Assurance</p>
+                </div>
+                <div class="member-card">
+                    <h3>Mikee C. Capilitan</h3>
+                    <p>Backend Developer</p>
+                </div>
+                <div class="member-card">
+                    <h3>John Keith B. Villarta</h3>
+                    <p>Document Analyst</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 CWTSAIS | Polytechnic University of the Philippines – Taguig
+    </div>
+</body>
+</html>
