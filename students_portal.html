@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CWTSAIS - Student Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary-maroon: #722F37;
+      --secondary-maroon: #9E474F;
+      --accent-gold: #D4AF37;
+      --light-gold: #F5E7B2;
+      --bg-light: #F8F4F1;
+      --card-bg: #FFFFFF;
+      --text-primary: #333333;
+      --text-light: #FFFFFF;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --sidebar-width: 320px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+      color: var(--text-light);
+       padding: 0;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+            z-index: 1000;
+            transition: var(--transition);
+            transform: translateX(-100%);
+        }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--light-gold));
+        }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hamburger-btn {
+      background-color: transparent;
+      color: var(--accent-gold);
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-right: 15px;
+    }
+
+    .hamburger-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+    .sidebar-header h3 {
+      color: var(--accent-gold);
+      font-size: 1.6em;
+      font-weight: 600;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      flex-grow: 1;
+      padding: 10px 0;
+    }
+
+    .menu-item {
+      margin-bottom: 5px;
+      position: relative;
+    }
+
+    .menu-link {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95em;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 50px;
+        }
+
+        .menu-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: width 0.3s ease;
+        }
+
+        .menu-link:hover::before,
+        .menu-item.active > .menu-link::before {
+            width: 100%;
+        }
+
+        .menu-link:hover,
+        .menu-item.active > .menu-link {
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .menu-link i {
+            margin-right: 15px;
+            font-size: 1.2em;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .menu-link span {
+            flex-grow: 1;
+            white-space: nowrap;
+        }
+
+        .menu-link .arrow {
+            margin-left: 15px;
+            font-size: 0.8em;
+            color: var(--accent-gold);
+            opacity: 0.8;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .menu-link:hover .arrow {
+            opacity: 1;
+        }
+
+        .menu-item.active > .menu-link .arrow {
+            transform: rotate(90deg);
+            opacity: 1;
+        }
+
+        .submenu {
+            background-color: rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .submenu.active {
+            max-height: 500px;
+        }
+
+        .submenu-item {
+            position: relative;
+        }
+
+        .submenu-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 25px 12px 60px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9em;
+            position: relative;
+            min-height: 45px;
+        }
+
+        .submenu-link::before {
+            content: '';
+            position: absolute;
+            left: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submenu-link:hover::before,
+        .submenu-item.active > .submenu-link::before {
+            opacity: 1;
+        }
+
+        .submenu-link:hover,
+        .submenu-item.active > .submenu-link {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding-left: 70px;
+        }
+
+    /* Main Content */
+    .main-content {
+      flex-grow: 1;
+      padding: 30px;
+      margin-left: 0;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-content.expanded {
+      margin-left: var(--sidebar-width);
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      background-color: var(--card-bg);
+      padding: 15px 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .top-nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--primary-maroon), var(--accent-gold));
+    }
+
+    .top-nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .top-nav-hamburger {
+      background-color: var(--primary-maroon);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .top-nav-hamburger:hover {
+      background-color: var(--secondary-maroon);
+    }
+
+    .top-nav-title {
+      font-size: 1.8em;
+      font-weight: 600;
+      color: var(--primary-maroon);
+    }
+
+    .top-nav-user {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      color: var(--primary-maroon);
+    }
+
+    .top-nav-user span {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .top-nav-user i {
+      font-size: 1.8em;
+      color: var(--primary-maroon);
+      background-color: var(--light-gold);
+      padding: 8px;
+      border-radius: 50%;
+    }
+
+    /* Announcement Section */
+    .announcement-section {
+      background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+      color: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .announcement-section i {
+      margin-right: 15px;
+      color: var(--accent-gold);
+      font-size: 1.5em;
+    }
+
+    /* Events Section */
+    .event-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .event-box {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .event-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .event-box h4 {
+      color: var(--primary-maroon);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .event-box h4 i {
+      margin-right: 10px;
+      color: var(--accent-gold);
+    }
+
+    .event-box p {
+      color: var(--text-primary);
+      font-size: 0.95em;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-maroon), var(--secondary-maroon));
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="hamburger-btn" id="sidebarCloseBtn"><i class="fas fa-times"></i></button>
+      <h3>CWTSAIS</h3>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="menu-item active"><a href="#" class="menu-link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+      <li class="menu-item"><a href="#" class="menu-link"><i class="fas fa-calendar-check"></i><span>Attendance</span></a></li>
+      <li class="menu-item"><a href="#" class="menu-link"><i class="fas fa-bullhorn"></i><span>Announcements</span></a></li>
+      <li class="menu-item"><a href="#" class="menu-link"><i class="fas fa-exclamation-triangle"></i><span>Penalties</span></a></li>
+      <li class="menu-item"><a href="#" class="menu-link"><i class="fas fa-user"></i><span>Profile</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    <header class="top-nav">
+      <div class="top-nav-left">
+        <button class="top-nav-hamburger" id="topNavHamburger"><i class="fas fa-bars"></i></button>
+        <div class="top-nav-title">Dashboard</div>
+      </div>
+      <div class="top-nav-user">
+        <span>User Name</span>
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </header>
+
+    <section class="announcement-section">
+      <i class="fas fa-bullhorn"></i>
+      Current Announcement: System maintenance scheduled for this weekend. Please save your work.
+    </section>
+
+    <section class="event-section">
+      <div class="event-box">
+        <h4><i class="fas fa-calendar-day"></i> Today's Event</h4>
+        <p>Drug Awareness Webinar at Educational Building, Social Hall, 1:00 PM – 3:00 PM</p>
+      </div>
+      <div class="event-box">
+        <h4><i class="fas fa-calendar-alt"></i> Upcoming Events</h4>
+        <p>Community Clean-Up Drive – November 15, 2025</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Polytechnic University of the Philippines – Taguig. All rights reserved.
+  </footer>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+    const topNavHamburger = document.getElementById('topNavHamburger');
+    const mainContent = document.getElementById('mainContent');
+
+    topNavHamburger.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      mainContent.classList.add('expanded');
+    });
+
+    sidebarCloseBtn.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      mainContent.classList.remove('expanded');
+    });
+  </script>
+</body>
+</html>
