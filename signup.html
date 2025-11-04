@@ -3,47 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up | PUP System</title>
+  <title>Sign up to CWTS-AIS</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background-color: #f2f2f2;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
     }
 
-    .signup-container {
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 380px;
-      text-align: center;
-      border: 2px solid #8b0000;
+    .form-box {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
     }
 
     h2 {
+      color: #222;
+      margin-bottom: 5px;
+      font-size: 26px;
+      text-align: center;
+    }
+
+    h2 span {
       color: #8b0000;
+    }
+
+    p {
+      color: #666;
       margin-bottom: 25px;
+      text-align: center;
+      font-size: 14px;
     }
 
     label {
       display: block;
-      text-align: left;
       color: #333;
-      margin-bottom: 8px;
-      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 4px;
+      font-weight: 500;
     }
 
     input {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 18px;
-      border: 1px solid #aaa;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 15px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .name-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .name-row .field {
+      flex: 1;
     }
 
     button {
@@ -56,47 +83,78 @@
       padding: 12px;
       cursor: pointer;
       transition: 0.3s;
+      font-size: 15px;
     }
 
     button:hover {
-      opacity: 0.9;
-      transform: scale(1.03);
+      background-color: #a30000;
     }
 
-    .login-link {
+    .login-text {
+      text-align: center;
       margin-top: 15px;
-      display: block;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .login-text a {
       color: #8b0000;
       text-decoration: none;
+      font-weight: 500;
     }
 
-    .login-link:hover {
+    .login-text a:hover {
       text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="signup-container">
-    <h2>Sign Up</h2>
+  <div class="form-box">
+    <h2>Sign up to <span>CWTS-AIS</span></h2>
+    <p>Please fill in the fields below.</p>
+
     <form action="#">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+      <label for="student-number">Student Number *</label>
+      <input type="text" id="student-number" placeholder="####-#####-TG-#" required>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      <div class="name-row">
+        <div class="field">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" placeholder="First Name" required>
+        </div>
+        <div class="field">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" placeholder="Last Name" required>
+        </div>
+      </div>
 
-      <label for="contact">Contact Number:</label>
-      <input type="tel" id="contact" name="contact" required>
+      <div class="name-row">
+        <div class="field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="field">
+          <label for="username">Username *</label>
+          <input type="text" id="username" placeholder="Username" required>
+        </div>
+      </div>
 
-      <label for="birthday">Birthday:</label>
-      <input type="date" id="birthday" name="birthday" required>
+      <div class="name-row">
+        <div class="field">
+          <label for="password">Password *</label>
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="field">
+          <label for="retype">Re-Type Password *</label>
+          <input type="password" id="retype" placeholder="Re-Type Password" required>
+        </div>
+      </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
+      <button type="submit">Sign up</button>
 
-      <button type="submit">Sign Up</button>
-
-      <a href="login.html" class="login-link">Already have an account? Log in</a>
+      <div class="login-text">
+        Already have an account? <a href="login.html">Log in here</a>
+      </div>
     </form>
   </div>
 </body>
